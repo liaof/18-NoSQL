@@ -34,15 +34,17 @@ router.get('/', getCallbackFunction);
 router.post('/' postCallbackFunction);
 
 
-- .findOneAndUpdate() find a single document, updates it, and returns. Set 3rd param as { new: true } to return a new document instead of the original
-- .updateOne(), .updateMany() updates documents without returning them
-- .insertOne(), .insertMany() MongoDB methods for adding data to a collection/database
-- .create() Mongoose method for both single and multiple data inserts
-- .deleteOne() .deleteMany() deletes data from collection/database
-- .findOneAndDelete() returns the document to be deleted before deleting it
-
+- .findOneAndUpdate() - find a single document, updates it, and returns. Set 3rd param as { new: true } to return a new document instead of the original
+- .updateOne(), .updateMany() - updates documents without returning them
+- .insertOne(), .insertMany() - MongoDB methods for adding data to a collection/database
+- .create() - Mongoose method for both single and multiple data inserts
+- .deleteOne() .deleteMany() - deletes data from collection/database
+- .findOneAndDelete() - returns the document to be deleted before deleting it
+- MongoDB-based functions start with $
+- getter - typically a special type of function that takes the stored data you are looking to retrieve and modifies or formats it upon return. Think of it like middleware for your data!
 ### Tools Used
 
-- MongoDB
-- Mongoose
+- MongoDB Don't need to recreate database to enforce new associations unlike w/ SQL
+- Mongoose (virtuals)
 - Express.js
+- 

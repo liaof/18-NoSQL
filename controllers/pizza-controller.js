@@ -5,6 +5,12 @@ const pizzaController = {
     // callback function for GET /api/pizzas route
     getAllPizza(req, res) {
         Pizza.find({})
+            .populate({// same as .inclues or join
+                path: 'comments',
+                select: '-__v'// tell mongoose we don't care about the __v field on comments. note the minus sign to denote 'no'
+            })
+            .select('-__v')// we don't care about the pizza's __v field either
+            .sort({ _id: -1 })// sort in decending order by _id ie. newest pizza first
             .then(dbPizzaData => res.json(dbPizzaData))
             .catch(err => {
                 console.log(err);
@@ -12,10 +18,15 @@ const pizzaController = {
             });
     },
     // get one pizza by id
-    // note we can not use the where clause as a param in getPizzaById, unlike in Sequelize
+    // note we can not use the 'where: id' clause as a param in getPizzaById, unlike in Sequelize
     getPizzaById({ params }, res) {
         // instead of accessing the entire req, destructure params out of it because it contains all the neccessary data to fufil this request
         Pizza.findOne({ _id: params.id })
+            .populate({
+                path: 'comments',
+                select: '-__v'
+            })
+            .select('-__v')
             .then(dbPizzaData => {
                 // if no pizza is found, send 404
                 if (!dbPizzaData) {
