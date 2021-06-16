@@ -1,5 +1,3 @@
-//const { response } = require("express");
-
 const $backBtn = document.querySelector('#back-btn');
 const $pizzaName = document.querySelector('#pizza-name');
 const $createdBy = document.querySelector('#created-by');
@@ -19,21 +17,20 @@ function getPizza() {
   // get pizzaInfo
   fetch(`/api/pizzas/${pizzaId}`)
     .then(response => {
-      // check for a 4xx or 5xx error from server
+      console.log(response);
       if (!response.ok) {
+        console.log('hi');
         throw new Error({ message: 'Something went wrong!' });
       }
 
       return response.json();
     })
     .then(printPizza)
-    // any error takes the user back to the home page using window.history.back()
     .catch(err => {
       console.log(err);
-      alert('Cannnot find a pizza with this id! Taking you back');
-      window.history.back();//as long as this session has a previous page, it will behave as if user clicked 'back' manually
-      // window history Api lets us control the state of the browser's session.
-    })
+      alert('Cannot find a pizza with this id! Taking you back.');
+      window.history.back();
+    });
 }
 
 function printPizza(pizzaData) {
@@ -115,7 +112,7 @@ function handleNewCommentSubmit(event) {
 
   const formData = { commentBody, writtenBy };
 
-  fetch('/api/comments/'+pizzaId, {
+  fetch(`/api/comments/${pizzaId}`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -131,13 +128,12 @@ function handleNewCommentSubmit(event) {
     })
     .then(commentResponse => {
       console.log(commentResponse);
-      location.reload();
+      // location.reload();
     })
     .catch(err => {
       console.log(err);
     });
 }
-
 
 function handleNewReplySubmit(event) {
   event.preventDefault();
@@ -156,8 +152,8 @@ function handleNewReplySubmit(event) {
   }
 
   const formData = { writtenBy, replyBody };
-  console.log('/api/comments/'+pizzaId+'/'+commentId);
-  fetch('/api/comments/'+pizzaId+'/'+commentId,{
+
+  fetch(`/api/comments/${pizzaId}/${commentId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -180,16 +176,11 @@ function handleNewReplySubmit(event) {
     });
 }
 
-
-
-
-
 $backBtn.addEventListener('click', function() {
   window.history.back();
 });
 
 $newCommentForm.addEventListener('submit', handleNewCommentSubmit);
 $commentSection.addEventListener('submit', handleNewReplySubmit);
-
 
 getPizza();
