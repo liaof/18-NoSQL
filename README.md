@@ -85,6 +85,7 @@ router.post( '/' postCallbackFunction );</br>
 - Mongoose (virtuals)
 - Express.js
 - IndexedDB
+- MongoDB Atlas - used to to hose our database, similar to JawsDB for MySQL based apps
 
 
 </br>
