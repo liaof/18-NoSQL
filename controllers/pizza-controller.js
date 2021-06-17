@@ -41,7 +41,7 @@ const pizzaController = {
             });
     },
     // createPizza
-    createPizza({ body }, res) {// destructure body out of the Express.js req object again
+    createPizza({ body }, res) {
         Pizza.create(body)
             .then(dbPizzaData => res.json(dbPizzaData))
             .catch(err => {
@@ -50,7 +50,7 @@ const pizzaController = {
             });
     },
     // update pizza by id
-    updatePizza({ params, body }, res) {
+    updatePizza({ params, body }, res) {// destructure body out of the Express.js req object again
         Pizza.findOneAndUpdate({ _id: params.id }, body, { new:true, runValidators: true })// new:true instructs mongoose to return a new version of the document from the request, instead of the original
             .then(dbPizzaData => {// NEED to explicitly state runValidators: true so we validate the data upon update
                 if (!dbPizzaData) {
