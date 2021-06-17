@@ -44,7 +44,10 @@ const pizzaController = {
     createPizza({ body }, res) {// destructure body out of the Express.js req object again
         Pizza.create(body)
             .then(dbPizzaData => res.json(dbPizzaData))
-            .catch(err => res.status(400).json(err));
+            .catch(err => {
+                res.status(400).json(err);
+                console.log('createPizza error');
+            });
     },
     // update pizza by id
     updatePizza({ params, body }, res) {
