@@ -4,18 +4,25 @@ const dateFormat = require('../utils/dateFormat');
 const PizzaSchema = new Schema(
     {
       pizzaName: {
-        type: String
+        type: String,
+        required: true,//requires pizzaName to exist
+        trim: true// same as trim(), removing white space before and after the first and last char
       },
       createdBy: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
       },
       createdAt: {
         type: Date,
         default: Date.now,
-        get: (createdAtVal) => dateFormat(createdAtVal)
+        get: (createdAtVal) => dateFormat(createdAtVal)// take the createdAt's value and dateFormat it
       },
       size: {
         type: String,
+        required: true,
+        // the enum option stands for enumerable, which refers to a set of data that can be iterated over, like using for...in to iterate through an object
+        enum: ['Personal', 'Small', 'Medium', 'Large','Extra Large'],// if the user tries to enter a pizza size not listed, like UberBig, the validation won't allow  it
         default: 'Large'
       },
       toppings: [],

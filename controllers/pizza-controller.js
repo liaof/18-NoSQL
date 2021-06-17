@@ -48,13 +48,13 @@ const pizzaController = {
     },
     // update pizza by id
     updatePizza({ params, body }, res) {
-        Pizza.findOneAndUpdate({ _id: params.id }, body, { new:true })// new:true instructs mongoose to return a new version of the document from the request, instead of the original
-            .then(dbPizzaData => {
+        Pizza.findOneAndUpdate({ _id: params.id }, body, { new:true, runValidators: true })// new:true instructs mongoose to return a new version of the document from the request, instead of the original
+            .then(dbPizzaData => {// NEED to explicitly state runValidators: true so we validate the data upon update
                 if (!dbPizzaData) {
-                    res.status(404).json({ message: 'No pizza found with this id!'});
+                    res.status(404).json({ message: 'No pizza found with this id!' });
                     return;
-                }
-                res.json(dbPizzaData);
+                  }
+                  res.json(dbPizzaData);
             })
             .catch(err => res.status(400).json(err));
     },

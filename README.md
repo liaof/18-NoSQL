@@ -19,6 +19,10 @@
 - MERN stack - MERN stands for MongoDB, Express.js, React, and Node.js
 
 - Add IndexedDB functionality to locally save the created pizzas whenever the app is offline.
+
+- Add validation to the Pizza model.
+- Add validation to the Comment model and Reply schema.
+- Deploy the application to Heroku.
 <!-- ******************************************************************************************************************* -->
 const dogObject = {
 --// this...
@@ -65,6 +69,8 @@ router.post( '/' postCallbackFunction );</br>
 
 - virtuals - allows a method to access a field that doesn't actually exist in the database by creating a virtual field that can be evaluated when the documents are </br>     
              retrieved from the database (like total_upvotes or reply_count that isn't stored in the database but calculated when the upvote and reply fields are shown)</br>
+
+- enumerable -
 
 - transaction - temporary connection. <!---->need to read up more on this<!---->
 
