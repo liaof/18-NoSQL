@@ -51,24 +51,25 @@ const handlePizzaSubmit = event => {
   }
 
   const formData = { pizzaName, createdBy, size, toppings };
-
-  fetch('/api/pizzas', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
-  })
+    fetch('/api/pizzas', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
     .then(response => response.json())
     .then(postResponse => {
+      alert('Pizza created successfully!');
       console.log(postResponse);
     })
+    // when we are unable to connect to the database, such as if the internet conection is broken use IndexedDB to save our input form data
     .catch(err => {
       console.log(err);
+      
       saveRecord(formData);
-      // DO INDEXED DB STUFF HERE
-    });
+  });
 };
 
 $pizzaForm.addEventListener('submit', handlePizzaSubmit);
