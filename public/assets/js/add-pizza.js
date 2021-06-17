@@ -51,6 +51,7 @@ const handlePizzaSubmit = event => {
   }
 
   const formData = { pizzaName, createdBy, size, toppings };
+  console.log('fetching pizza POST')
   fetch('/api/pizzas', {
     method: 'POST',
     headers: {
