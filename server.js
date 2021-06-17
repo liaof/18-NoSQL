@@ -15,7 +15,7 @@ app.use(require('./routes'));
 // else default to mongodb://localhost/pizza-hunt, the local MongoDB server's database
 //
 // MongoDB will automatically find and connect to the database(in this case pizza-hunt) if it exists or create the dataase if it doesn't
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://rootytooty:WaNg1934@cluster0.s7fq4.mongodb.net/pizza_hunt_db?retryWrites=true&w=majority', {
     // the 2nd arguement is a set of confirguration options mongoose asks for more information about
     useFindAndModify: false,
     useNewUrlParser: true,
