@@ -15,6 +15,7 @@ app.use(require('./routes'));
 // else default to mongodb://localhost/pizza-hunt, the local MongoDB server's database
 //
 // MongoDB will automatically find and connect to the database(in this case pizza-hunt) if it exists or create the dataase if it doesn't
+console.log(process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
   useFindAndModify: false,
   useNewUrlParser: true,
@@ -25,3 +26,5 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
 mongoose.set('debug', true);
 
 app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+
+mongodb+srv://lernantino-user:password123@cluster0.5k55w.mongodb.net/deep-thoughts?retryWrites=true&w=majority

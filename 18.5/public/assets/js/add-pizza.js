@@ -64,6 +64,7 @@ const handlePizzaSubmit = event => {
     .then(postResponse => {
       console.log(postResponse);
     })
+    // when we are unable to connect to the database, such as if the internet conection is broken use IndexedDB to save our input form data
     .catch(err => {
       console.log(err);
       saveRecord(formData);
