@@ -18,7 +18,7 @@
 - Create virtuals to extend the functionality of the models.
 - MERN stack - MERN stands for MongoDB, Express.js, React, and Node.js
 
-- Add IndexedDB functionality to locally save the created pizzas whenever the app is offline.
+- Add IndexedDB functionality to locally save the created pizzas whenever the app is offline. :)
 
 - Add validation to the Pizza model.
 - Add validation to the Comment model and Reply schema.

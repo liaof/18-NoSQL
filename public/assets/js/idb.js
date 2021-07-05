@@ -9,7 +9,7 @@ const request = indexedDB.open('pizza_hunt',1);// request will act as an event l
                                                //variable. Thus, we could say window.indexedDB.open(), but there's no need to. ;
 
 // this event will not emit after the first time we run this and created the new_pizza obejct store
-// unless new_pizza is deleted or we change the version via .open(), indicating our db needs an update
+// it emits upon updating the database version
 request.onupgradeneeded = function(event) {
     // // when this event executes, store a local scoped connection to the database
     const db = event.target.result;

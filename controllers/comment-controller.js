@@ -8,7 +8,7 @@ const commentController = {
       .then(({ _id }) => {// _id being the id of the comment just created
         return Pizza.findOneAndUpdate(// return this promise so we can do something with the results
           { _id: params.pizzaId },// where: {_id : params.pizzaId}. e _id = pizza._id
-          { $push: { comments: _id } },// add comment._id to the pizza.comments array = comment._id
+          { $push: { comments: _id } },// add comment._id to the pizza.comments subarray 
           { new: true }// receive back the new updated pizza, with the new comment included
         );
       })

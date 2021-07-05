@@ -11,15 +11,7 @@ const pizzaController = {
       })
       .select('-__v')// we don't care about the pizza's __v field either
       .sort({ _id: -1 })// sort in decending order by _id ie. newest pizza first
-      .then(dbPizzaData => {
-        // if no pizza is found, send 404
-        if (!dbPizzaData) {
-            console.log('No DB found');
-            return;
-        }
-        res.json(dbPizzaData);
-      })
-      
+      .then(dbPizzaData => res.json(dbPizzaData))
       .catch(err => {
         console.log(err);
         res.sendStatus(400);
