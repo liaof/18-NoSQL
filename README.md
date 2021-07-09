@@ -10,7 +10,7 @@
 - Create a relationship between two models.</br>
 - Interact with arrays in Mongoose.</br>
 - Work with subdocuments in Mongoose.</br>
-- Implement getters with Mongoose.</br>
+- Implement getters with Mongoose.</br>s
 
 - Enable users to view a single pizza’s discussion.
 - Create subdocuments in Mongoose.
